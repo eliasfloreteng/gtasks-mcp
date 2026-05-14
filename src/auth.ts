@@ -23,6 +23,8 @@ function requireEnv(name: string): string {
 }
 
 export function getRedirectUri(): string {
+  const override = process.env.OAUTH_REDIRECT_URI?.trim();
+  if (override) return override;
   const port = process.env.PORT ?? "8787";
   return `http://localhost:${port}/auth/callback`;
 }
