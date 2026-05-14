@@ -1,0 +1,12 @@
+services:
+  gtasks:
+    build:
+      context: .
+    restart: unless-stopped
+    ports:
+      - "8787:8787"
+    env_file:
+      - .env
+    volumes:
+      - ./tokens.json:/app/tokens.json
+      - ./.env:/app/.env
